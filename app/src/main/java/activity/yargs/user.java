@@ -16,6 +16,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import zxing.Constants;
+import zxing.activity.CaptureActivity;
+
 public class user extends Fragment {
 
     private  String[]
@@ -51,6 +54,13 @@ public class user extends Fragment {
 
                 switch (position)
                 {
+                    case 4:
+                        //扫二维码
+
+
+                        Intent intent = new Intent(getActivity().getBaseContext(), CaptureActivity.class);
+                        startActivityForResult(intent, Constants.REQ_QR_CODE);
+                        break;
                     case 6:
                         //获取输入的电话号码
                         break;
