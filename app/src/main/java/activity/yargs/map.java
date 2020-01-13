@@ -2,7 +2,7 @@ package activity.yargs;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+
 
 import android.util.Log;
 import android.util.Pair;
@@ -29,6 +29,7 @@ import com.amap.api.maps.utils.overlay.SmoothMoveMarker;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
 import store.AllAmap;
 
 

@@ -17,7 +17,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
 import android.provider.MediaStore;
-import android.support.v4.content.PermissionChecker;
+
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,6 +46,7 @@ import java.util.Hashtable;
 import java.util.Vector;
 
 import activity.yargs.R;
+import androidx.core.content.PermissionChecker;
 import zxing.Constants;
 import zxing.camera.CameraManager;
 import zxing.decoding.CaptureActivityHandler;

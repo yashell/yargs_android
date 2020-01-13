@@ -7,7 +7,7 @@
     android:background="@color/mainColor"
     tools:context=".info_show">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:layout_gravity="center"
             android:text="资讯"
             android:textColor="@color/ColorWrite" />
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:layout_width="match_parent"

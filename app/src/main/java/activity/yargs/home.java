@@ -1,12 +1,7 @@
 package activity.yargs;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +11,14 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 public class home extends Fragment {
 
-    private  ViewPager mvp;
+    private ViewPager mvp;
     private List<ImageView> mlist;
 
 
@@ -47,7 +47,7 @@ public class home extends Fragment {
 
     }
 
-    class MyAdapter extends PagerAdapter{
+    class MyAdapter extends PagerAdapter {
         //用来决定ViewPager中到底可以显示多少个子视图
         @Override
         public int getCount() {

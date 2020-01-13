@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,13 +14,9 @@
             android:layout_gravity="center"
             android:text="资讯"
             android:textColor="@color/ColorWrite" />
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
-    <!--<android.support.v4.widget.SwipeRefreshLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:orientation="vertical"-->
-        <!--android:id="@+id/swipeLayout" >-->
+
 
     <ListView
         android:layout_width="match_parent"
@@ -34,6 +30,6 @@
 
     </ListView>
 
-    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
 
 </LinearLayout>
