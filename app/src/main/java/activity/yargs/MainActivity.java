@@ -19,6 +19,8 @@ import com.amap.api.maps.model.PolylineOptions;
 import com.amap.api.maps.utils.SpatialRelationUtil;
 import com.amap.api.maps.utils.overlay.SmoothMoveMarker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +37,7 @@ import store.AllAmap;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;//滑动的DrawerLayout
+    private NavigationView mNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,35 @@ public class MainActivity extends AppCompatActivity {
         //这两个是nav的
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+        mNavigationView = (NavigationView) findViewById(R.id.nNavigationView);
+
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                //在这里处理item的点击事件
+
+                switch(item.getItemId()){
+                    case R.id.sk1:
+                        Snackbar.make(mNavigationView,"出行", Snackbar.LENGTH_LONG).show();
+                        break;
+                    case R.id.sk2:
+                        Snackbar.make(mNavigationView,"资讯", Snackbar.LENGTH_LONG).show();
+                        break;
+                    case R.id.sk3:
+                        Snackbar.make(mNavigationView,"个人", Snackbar.LENGTH_LONG).show();
+                        break;
+                    case R.id.sk4:
+                        Snackbar.make(mNavigationView,"分享", Snackbar.LENGTH_LONG).show();
+                        break;
+                    case R.id.sk5:
+                        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
 
@@ -95,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+
+
 
     public  void OpenDrewerLayout(View view){
         //不一定是LinearLayout类型，xml定义的什么类型就什么类型
