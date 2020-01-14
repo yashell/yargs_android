@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/nav2"
+            android:title="出行" />
+        <item
+            android:id="@+id/nav_home1"
+            android:icon="@drawable/nav3"
+            android:title="资讯" />
+        <item
+            android:id="@+id/nav_home2"
+            android:icon="@drawable/nav4"
+            android:title="个人" />
+    </group>
+
+    <item android:title="其它">
+        <menu>
+            <item
+                android:id="@+id/nav_home4"
+                android:icon="@drawable/nav3"
+                android:title="分享" />
+            <item
+                android:id="@+id/nav_home5"
+                android:icon="@drawable/nav4"
+                android:title="退出" />
+        </menu>
+    </item>
+
+</menu>

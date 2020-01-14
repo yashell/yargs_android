@@ -44,17 +44,27 @@
 
     </FrameLayout>
 
+
+
     <LinearLayout
         android:id="@+id/rights"
-        android:layout_width="240dp"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#144980">
-        <TextView
+        android:background="@color/ColorWrite">
+
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorTextA"
-            android:text="标题1" />
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:itemIconTint="@color/titleColor"
+            app:itemTextColor="@color/titleColor"
+            app:headerLayout="@layout/home_drawer"
+            app:menu="@menu/drawer_menu" />
+
     </LinearLayout>
 
 

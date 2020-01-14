@@ -1,5 +1,7 @@
 package activity.yargs;
 
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -15,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class home extends Fragment {
 
@@ -43,9 +47,14 @@ public class home extends Fragment {
         }
         mvp.setAdapter(new MyAdapter());
 
+
         return view;
 
     }
+
+
+
+
 
     class MyAdapter extends PagerAdapter {
         //用来决定ViewPager中到底可以显示多少个子视图
