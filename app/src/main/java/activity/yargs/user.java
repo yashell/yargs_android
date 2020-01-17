@@ -1,9 +1,11 @@
 package activity.yargs;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
 import zxing.Constants;
 import zxing.activity.CaptureActivity;
 
@@ -23,6 +34,9 @@ public class user extends Fragment {
 
     private  String[]
             data={"修改密码","我的相册","分析统计","位置分享","扫二维码","我的二维码","拨打电话"};
+    private RecyclerView recyclerview;
+    private ArrayList<String> datas;
+    private ArrayList<Integer> images;
 
 
     private ListView listView;
@@ -36,28 +50,30 @@ public class user extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.user, container, false);
-
         parentAvtivity = inflater.inflate(R.layout.activity_main,container,false);
 
+//        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+//        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+//
+//        setHasOptionsMenu(true);
 
-        listView=(ListView)view.findViewById(R.id.ssk);  //绑定ListView
-        listView.setAdapter(new MyAdapter());
+        initData();
+        recyclerview =(RecyclerView) view.findViewById(R.id.recyclerview);
+        MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(getActivity(),datas,images);
+        recyclerview.setAdapter(adapter);
+        recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
 
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //添加分割线
+        DividerItemDecoration divider = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
+        divider.setDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.divider));
+        recyclerview.addItemDecoration(divider);
+        adapter.setOnItemClickListener(new MyRecyclerViewAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //parent为每一项的父容器，也就是那个ListView
-                // view是每一项，也就是item
-                //position是每一项的索引
-                //id 没说哪的id
-
-                switch (position)
+            public void onItemClick(View view, String data, int index) {
+                switch (index)
                 {
                     case 4:
                         //扫二维码
-
-
                         Intent intent = new Intent(getActivity().getBaseContext(), CaptureActivity.class);
                         startActivityForResult(intent, Constants.REQ_QR_CODE);
                         break;
@@ -65,87 +81,49 @@ public class user extends Fragment {
                         //获取输入的电话号码
                         break;
                 }
-
+                Toast.makeText(getActivity(),"data"+data,Toast.LENGTH_SHORT).show();
             }
         });
+
         return view;
     }
 
 
-    class MyAdapter extends BaseAdapter {
-        //数据源中项的个数
-        @Override
-        public int getCount() {
-            return data.length;
-        }
-        //项
-        @Override
-        public Object getItem(int position) {
-            return position;
-        }
+    private void initData() {
+        datas = new ArrayList<>();
+        datas.add("修改密码");
+        datas.add("我的相册");
+        datas.add("分析统计");
+        datas.add("位置分享");
+        datas.add("扫二维码");
+        datas.add("我的二维码");
+        datas.add("拨打电话");
+        datas.add("测试");
+        datas.add("测试");
+        datas.add("测试");
+        datas.add("测试");
+        datas.add("测试");
+        datas.add("测试");
+        datas.add("测试");
+        datas.add("测试");
 
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-        //项显示的View position 项的索引
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            //解析布局文件，成为View
-            View view;
-            ViewHolder holder=null;
-            if(convertView==null){  //使用converView来提高效率
-                LayoutInflater inflater=LayoutInflater.from(parentAvtivity.getContext());
-                view=inflater.inflate(R.layout.compent_user_list,null);
-                holder=new ViewHolder(view);
-                view.setTag(holder); //在view上保存程序所需要的数据
-            }
-            else {
-                view=convertView;
-                holder=(ViewHolder) view.getTag();  //取出之前的数据
-            }
-
-            //填充当前项的数据
-            //图片的写法
-//            ImageView image=holder.getImage();  //这个图片ID是布局文件中显示图片的ImageView的ID
-            ImageView image=holder.getImage();  //这个图片ID是布局文件中显示图片的ImageView的ID
-            image.setImageResource(imgResIds[position%data.length]);
-            //文本的写法
-            TextView text=holder.getText(); //这个文本ID是布局文件中显示图片的TextView的ID
-            text.setText(data[position%data.length]);
-
-            return view;
-        }
+        images = new ArrayList<>();
+        images.add(R.drawable.password);
+        images.add(R.drawable.album_nav);
+        images.add(R.drawable.chart);
+        images.add(R.drawable.map);
+        images.add(R.drawable.sweep_code);
+        images.add(R.drawable.creat_sweep_code);
+        images.add(R.drawable.callphone);
+        images.add(R.drawable.callphone);
+        images.add(R.drawable.callphone);
+        images.add(R.drawable.callphone);
+        images.add(R.drawable.callphone);
+        images.add(R.drawable.callphone);
+        images.add(R.drawable.callphone);
+        images.add(R.drawable.callphone);
+        images.add(R.drawable.callphone);
     }
-
-    //为了优化，创建持有者类
-    class ViewHolder{
-        private View view;
-        private ImageView image;
-        private TextView title;
-        public ViewHolder(View view)
-        {
-            this.view=view;
-        }
-        public ImageView getImage(){
-            if (image==null)
-            {
-                image= (ImageView) view.findViewById(R.id.imageView);
-            }
-            return image;
-        }
-        public TextView getText(){
-            if(title==null)
-            {
-                title=(TextView) view.findViewById(R.id.textk);
-            }
-            return title;
-        }
-
-
-    }
-
-
 
 
 
