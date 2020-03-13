@@ -14,10 +14,16 @@ import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.LatLngBounds;
+import com.amap.api.maps.model.Poi;
 import com.amap.api.maps.model.Polyline;
 import com.amap.api.maps.model.PolylineOptions;
 import com.amap.api.maps.utils.SpatialRelationUtil;
 import com.amap.api.maps.utils.overlay.SmoothMoveMarker;
+import com.amap.api.navi.AmapNaviPage;
+import com.amap.api.navi.AmapNaviParams;
+import com.amap.api.navi.AmapNaviType;
+import com.amap.api.navi.INaviInfoCallback;
+import com.amap.api.navi.model.AMapNaviLocation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -35,7 +41,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import store.AllAmap;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements INaviInfoCallback {
     private DrawerLayout mDrawerLayout;//滑动的DrawerLayout
     private NavigationView mNavigationView;
     @Override
@@ -140,6 +146,22 @@ public class MainActivity extends AppCompatActivity {
     }
     /***
      * map
+     * 打开在线导航
+     */
+    public void onLineNavigation(View view) {
+//        LatLng p2 = new LatLng(25.0372383400, 102.7125281100);//昆明南屏街家乐福
+//        LatLng p3 = new LatLng(39.904556, 116.427231);//北京站
+
+//        AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), new AmapNaviParams(null, null, new Poi("南屏街家乐福", p2, ""), AmapNaviType.DRIVER), MainActivity.this);
+//        AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), new AmapNaviParams(null, null, new Poi("南屏街家乐福", p2, ""), AmapNaviType.DRIVER), MainActivity.this);
+
+//        AmapNaviParams params = new AmapNaviParams(new Poi("北京站", p3, ""), null, new Poi("故宫博物院", p2, ""), AmapNaviType.DRIVER);
+//        params.setUseInnerVoice(true);
+//        AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), params, MainActivity.this);
+        AmapNaviPage.getInstance().showRouteActivity(this.getApplicationContext(), new AmapNaviParams(null), MainActivity.this);
+    }
+    /***
+     * map
      * 打开离线地图
      */
     public void offLineMap(View view) {
@@ -228,5 +250,106 @@ AllAmap.myMap. moveCamera(CameraUpdateFactory.changeLatLng(latLng));
     }
 
 
+    /**
+     * 下边是导航 implements INaviInfoCallback 引入的方法
+     */
+    @Override
+    public void onInitNaviFailure() {
 
+    }
+
+    @Override
+    public void onGetNavigationText(String s) {
+
+    }
+
+    @Override
+    public void onLocationChange(AMapNaviLocation aMapNaviLocation) {
+
+    }
+
+    @Override
+    public void onArriveDestination(boolean b) {
+
+    }
+
+    @Override
+    public void onStartNavi(int i) {
+
+    }
+
+    @Override
+    public void onCalculateRouteSuccess(int[] ints) {
+
+    }
+
+    @Override
+    public void onCalculateRouteFailure(int i) {
+
+    }
+
+    @Override
+    public void onStopSpeaking() {
+
+    }
+
+    @Override
+    public void onReCalculateRoute(int i) {
+
+    }
+
+    @Override
+    public void onExitPage(int i) {
+
+    }
+
+    @Override
+    public void onStrategyChanged(int i) {
+
+    }
+
+    @Override
+    public View getCustomNaviBottomView() {
+        return null;
+    }
+
+    @Override
+    public View getCustomNaviView() {
+        return null;
+    }
+
+    @Override
+    public void onArrivedWayPoint(int i) {
+
+    }
+
+    @Override
+    public void onMapTypeChanged(int i) {
+
+    }
+
+    @Override
+    public View getCustomMiddleView() {
+        return null;
+    }
+
+    @Override
+    public void onNaviDirectionChanged(int i) {
+
+    }
+
+    @Override
+    public void onDayAndNightModeChanged(int i) {
+
+    }
+
+    @Override
+    public void onBroadcastModeChanged(int i) {
+
+    }
+
+    @Override
+    public void onScaleAutoChanged(boolean b) {
+
+    }
 }

@@ -44,7 +44,7 @@ android:orientation="horizontal"
         android:textColor="@color/colorTextA"
         android:layout_weight="1"
         android:gravity="center_vertical|left"
-        android:text="线路查询">
+        android:text="路径规划">
     </TextView>
 </LinearLayout>
 
@@ -63,6 +63,7 @@ android:orientation="horizontal"
     android:layout_weight="1"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
+    android:onClick="onLineNavigation"
     >
     <ImageView
         android:layout_width="30dp"
@@ -76,7 +77,7 @@ android:orientation="horizontal"
         android:layout_weight="1"
         android:gravity="center"
 
-        android:text="路径规划">
+        android:text="在线导航">
     </TextView>
 </LinearLayout>
 

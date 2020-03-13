@@ -2,6 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowIsTranslucent">true</item>
         <!--顶部导航栏的背景色. 这两个如何隐藏导航就没用了-->
         <item name="colorPrimary">@color/topColor</item>
         <!--顶部导航栏的文字颜色  这两个如何隐藏导航就没用了. -->
