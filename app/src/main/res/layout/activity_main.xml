@@ -7,27 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         >  //FrameLayout里边就是页面的内容
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <FrameLayout
                 android:id="@+id/router"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/mainColor">
-
             </FrameLayout>
-
-
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/nav"
                 android:layout_width="match_parent"
@@ -38,14 +32,8 @@
                 app:itemTextColor="@drawable/nav_choose"
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/menu" />
-
-
         </LinearLayout>
-
     </FrameLayout>
-
-
-
     <LinearLayout
         android:id="@+id/rights"
         android:layout_width="300dp"
@@ -66,6 +54,61 @@
             app:menu="@menu/drawer_menu" />
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="45dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="55dp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView_b"
+                android:src="@drawable/menusilde1"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView_c"
+                android:src="@drawable/menusilde2"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView_d"
+                android:src="@drawable/menusilde3"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView_e"
+                android:src="@drawable/menusilde4"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true" />
+
+            <ImageView
+                android:id="@+id/imageView_a"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="menuslide"
+                android:src="@drawable/menusilde" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 
 

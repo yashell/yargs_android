@@ -4,11 +4,13 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,10 +53,6 @@ public class home extends Fragment {
         return view;
 
     }
-
-
-
-
 
     class MyAdapter extends PagerAdapter {
         //用来决定ViewPager中到底可以显示多少个子视图

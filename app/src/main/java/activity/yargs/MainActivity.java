@@ -1,5 +1,7 @@
 package activity.yargs;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,7 +9,10 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
@@ -44,10 +49,23 @@ import store.AllAmap;
 public class MainActivity extends AppCompatActivity implements INaviInfoCallback {
     private DrawerLayout mDrawerLayout;//滑动的DrawerLayout
     private NavigationView mNavigationView;
+
+    //浮动按钮的
+    private int[] mRes = {R.id.imageView_a, R.id.imageView_b, R.id.imageView_c,
+            R.id.imageView_d, R.id.imageView_e};
+    private List<ImageView> mImageViews = new ArrayList<ImageView>();
+    private boolean mFlag = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //浮动按钮的
+        for (int i = 0; i < mRes.length; i++) {
+            ImageView imageView = (ImageView) findViewById(mRes[i]);
+            mImageViews.add(imageView);
+        }
 
 
         AllAmap.ss="真的是";
@@ -63,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements INaviInfoCallback
         //这两个是nav的
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
 
 
         mNavigationView = (NavigationView) findViewById(R.id.nNavigationView);
@@ -135,6 +154,72 @@ public class MainActivity extends AppCompatActivity implements INaviInfoCallback
     };
 
 
+
+    //浮动按钮的
+    public void menuslide(View v) {
+        switch (v.getId()) {
+            case R.id.imageView_a:
+                if (mFlag) {
+                    startAnim();
+                } else {
+                    closeAnim();
+                }
+                break;
+        }
+    }
+    private void closeAnim() {
+        ObjectAnimator animator0 = ObjectAnimator.ofFloat(mImageViews.get(0),
+                "alpha", 0.5F, 1F);
+        ObjectAnimator animator1 = ObjectAnimator.ofFloat(mImageViews.get(1),
+                "translationX", -100F, 0);
+        ObjectAnimator animator2 = ObjectAnimator.ofFloat(mImageViews.get(2),
+                "translationX", -200F, 0);
+        ObjectAnimator animator3 = ObjectAnimator.ofFloat(mImageViews.get(3),
+                "translationX", -300F, 0);
+        ObjectAnimator animator4 = ObjectAnimator.ofFloat(mImageViews.get(4),
+                "translationX", -400F, 0);
+        AnimatorSet set = new AnimatorSet();
+        set.setDuration(500);
+        set.setInterpolator(new BounceInterpolator());
+        set.playTogether(animator0, animator1, animator2, animator3, animator4);
+        set.start();
+        mFlag = true;
+    }
+    private void startAnim() {
+        ObjectAnimator animator0 = ObjectAnimator.ofFloat(
+                mImageViews.get(0),
+                "alpha",
+                1F,
+                0.2F);
+
+        ObjectAnimator animator1 = ObjectAnimator.ofFloat(
+                mImageViews.get(1),
+                "translationX",
+                -100F);
+        ObjectAnimator animator2 = ObjectAnimator.ofFloat(
+                mImageViews.get(2),
+                "translationX",
+                -200F);
+        ObjectAnimator animator3 = ObjectAnimator.ofFloat(
+                mImageViews.get(3),
+                "translationX",
+                -300F);
+        ObjectAnimator animator4 = ObjectAnimator.ofFloat(
+                mImageViews.get(4),
+                "translationX",
+                -400F);
+        AnimatorSet set = new AnimatorSet();
+        set.setDuration(500);
+        set.setInterpolator(new BounceInterpolator());
+        set.playTogether(
+                animator0,
+                animator1,
+                animator2,
+                animator3,
+                animator4);
+        set.start();
+        mFlag = false;
+    }
 
 
     public  void OpenDrewerLayout(View view){
